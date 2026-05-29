@@ -70,7 +70,6 @@ model User {
   availability  Availability[]
   appointments  Appointment[]  @relation("ProfessionalAppointments")
   notifications Notification[]
-  blockedDates BlockedDate[]
 
   @@index([slug])
   @@index([email])
@@ -146,13 +145,12 @@ model Availability {
 }
 
 model BlockedDate {
-  id        String   @id @default(cuid())
-  date      DateTime
+  id     String   @id @default(cuid())
+  userId String
+  date   DateTime
+  reason String?
 
-  userId    String
-  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
+  @@index([userId])
 }
 
 model Appointment {

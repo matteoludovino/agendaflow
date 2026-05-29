@@ -93,15 +93,6 @@ src/
 | CRM de clientes        | ❌   | ❌         | ✅              |
 | Suporte prioritário    | ❌   | ❌         | ✅              |
 
-## Fases de implementação
-
-- **Fase 1** ✅ — Infraestrutura (auth, banco, layout)
-- **Fase 2** — Onboarding (3 steps)
-- **Fase 3** — Core (serviços, disponibilidade)
-- **Fase 4** — Agendamento público
-- **Fase 5** — Monetização (Stripe)
-- **Fase 6** — Polimento e deploy
-
 ## Deploy
 
 Recomendado: [Vercel](https://vercel.com) + [Neon.tech](https://neon.tech)

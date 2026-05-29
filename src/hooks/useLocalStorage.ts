@@ -10,7 +10,6 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       const item = window.localStorage.getItem(key)
       if (item) setStoredValue(JSON.parse(item))
     } catch {
-      // sem acesso ao localStorage (SSR ou privado)
     }
   }, [key])
 
@@ -20,7 +19,6 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       setStoredValue(valueToStore)
       window.localStorage.setItem(key, JSON.stringify(valueToStore))
     } catch {
-      // silencioso
     }
   }
 
