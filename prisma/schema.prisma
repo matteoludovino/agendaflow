@@ -68,6 +68,7 @@ model User {
   sessions      Session[]
   services      Service[]
   availability  Availability[]
+  blockedDates  BlockedDate[]
   appointments  Appointment[]  @relation("ProfessionalAppointments")
   notifications Notification[]
 
@@ -145,10 +146,13 @@ model Availability {
 }
 
 model BlockedDate {
-  id     String   @id @default(cuid())
-  userId String
-  date   DateTime
-  reason String?
+  id        String   @id @default(cuid())
+  userId    String
+  date      DateTime
+  reason    String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
 }
