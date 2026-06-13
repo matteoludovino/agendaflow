@@ -7,6 +7,7 @@ import { ManageSubscriptionButton } from "@/components/billing/ManageSubscriptio
 import { PageHeader } from "@/components/shared/index"
 import { Crown, Check, AlertCircle, Zap, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { PLANS } from "@/lib/constants/plans"
 import { startOfMonth, endOfMonth } from "date-fns"
 
 export const metadata: Metadata = { title: "Faturamento" }
