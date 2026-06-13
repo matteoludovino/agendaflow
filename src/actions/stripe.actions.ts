@@ -1,7 +1,6 @@
 "use server"
 
 import { redirect } from "next/navigation"
-import { isRedirectError } from "next/dist/client/components/redirect"
 import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 import { stripe } from "@/lib/stripe"
@@ -35,18 +34,18 @@ async function getOrCreateStripeCustomer(userId: string): Promise<string> {
 export async function createCheckoutSessionAction(
   planId: "PRO" | "BUSINESS"
 ): Promise<ActionResult> {
-  try {
-    const session = await auth()
-    if (!session?.user?.id) redirect("/login")
+  const session = await auth()
+  if (!session?.user?.id) redirect("/login")
 
-    const plan = PLANS[planId]
-    if (!plan?.stripePriceId) {
-      return {
-        success: false,
-        error: `Preço do plano ${planId} não configurado. Defina STRIPE_${planId}_PRICE_ID no .env.`,
-      }
+  const plan = PLANS[planId]
+  if (!plan?.stripePriceId) {
+    return {
+      success: false,
+      error: `Preço do plano ${planId} não configurado. Defina STRIPE_${planId}_PRICE_ID no .env.`,
     }
+  }
 
+  try {
     const customerId = await getOrCreateStripeCustomer(session.user.id)
 
     const checkout = await stripe.checkout.sessions.create({
@@ -65,26 +64,26 @@ export async function createCheckoutSessionAction(
 
     redirect(checkout.url!)
   } catch (err) {
-    if (isRedirectError(err)) throw err
+    if ((err as { digest?: string })?.digest?.startsWith("NEXT_REDIRECT")) throw err
     console.error("[stripe] createCheckoutSession:", err)
     return { success: false, error: "Erro ao iniciar checkout. Tente novamente." }
   }
 }
 
 export async function createPortalSessionAction(): Promise<ActionResult> {
+  const session = await auth()
+  if (!session?.user?.id) redirect("/login")
+
+  const user = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { stripeCustomerId: true },
+  })
+
+  if (!user?.stripeCustomerId) {
+    return { success: false, error: "Nenhuma assinatura ativa encontrada." }
+  }
+
   try {
-    const session = await auth()
-    if (!session?.user?.id) redirect("/login")
-
-    const user = await prisma.user.findUnique({
-      where: { id: session.user.id },
-      select: { stripeCustomerId: true },
-    })
-
-    if (!user?.stripeCustomerId) {
-      return { success: false, error: "Nenhuma assinatura ativa encontrada." }
-    }
-
     const portal = await stripe.billingPortal.sessions.create({
       customer: user.stripeCustomerId,
       return_url: `${APP_CONFIG.url}/dashboard/settings/billing`,
@@ -92,7 +91,7 @@ export async function createPortalSessionAction(): Promise<ActionResult> {
 
     redirect(portal.url)
   } catch (err) {
-    if (isRedirectError(err)) throw err
+    if ((err as { digest?: string })?.digest?.startsWith("NEXT_REDIRECT")) throw err
     console.error("[stripe] createPortalSession:", err)
     return { success: false, error: "Erro ao abrir portal. Tente novamente." }
   }
