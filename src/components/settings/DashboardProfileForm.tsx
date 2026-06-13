@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 
 import { useState, useTransition } from "react"
 import { ExternalLink, Loader2, Save, Crown } from "lucide-react"
@@ -62,7 +63,7 @@ export function DashboardProfileForm({ user }: DashboardProfileFormProps) {
       <div className="flex items-center gap-4">
         <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full bg-primary text-xl font-bold text-primary-foreground">
           {user.image ? (
-            <img src={user.image} alt={user.name ?? ""} className="h-full w-full object-cover" />
+            <Image src={user.image} alt={user.name ?? ""} width={64} height={64} className="h-full w-full object-cover" />
           ) : (
             initials
           )}
@@ -186,7 +187,7 @@ export function DashboardProfileForm({ user }: DashboardProfileFormProps) {
             aria-label="Abrir página de agendamento"
           >
             <ExternalLink className="h-4 w-4" />
-          </Link>
+          </a>
         </div>
 
         {!isPro && (
