@@ -177,7 +177,7 @@ export default function HomePage() {
             {TESTIMONIALS.map(({ name, role, text, rating }) => (
               <div key={name} className="card-hover rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm">
                 <div className="mb-4 flex gap-0.5">{Array.from({ length: rating }).map((_, i) => <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />)}</div>
-                <p className="mb-5 text-sm leading-relaxed text-zinc-600">"{text}"</p>
+                <p className="mb-5 text-sm leading-relaxed text-zinc-600">&ldquo;{text}&rdquo;</p>
                 <div><p className="font-semibold text-zinc-900">{name}</p><p className="text-xs text-zinc-400">{role}</p></div>
               </div>
             ))}

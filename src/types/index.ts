@@ -1,4 +1,4 @@
-import type { User, Service, Appointment, Notification, Availability } from "@prisma/client"
+import type { User, Service, Appointment, Availability } from "@prisma/client"
 
 export type UserPublicProfile = Pick<
   User,

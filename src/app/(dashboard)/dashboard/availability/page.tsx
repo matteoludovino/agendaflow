@@ -12,7 +12,7 @@ export default async function AvailabilityPage() {
   const session = await auth()
   if (!session?.user?.id) redirect("/login")
 
-  const [availability, blockedDates, user] = await Promise.all([
+  const [availability, blockedDates] = await Promise.all([
     prisma.availability.findMany({
       where: { userId: session.user.id },
       orderBy: { dayOfWeek: "asc" },

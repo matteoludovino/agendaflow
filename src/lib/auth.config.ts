@@ -1,4 +1,5 @@
 import type { NextAuthConfig } from "next-auth"
+import type { User } from "next-auth"
 
 export default {
   pages: {
@@ -30,10 +31,11 @@ export default {
     },
     jwt({ token, user }) {
       if (user) {
-        token.id = user.id
-        token.slug = (user as any).slug
-        token.plan = (user as any).plan
-        token.onboardingDone = (user as any).onboardingDone
+        const u = user as User
+        token.id = u.id ?? ""
+        token.slug = u.slug
+        token.plan = u.plan
+        token.onboardingDone = u.onboardingDone
       }
       return token
     },

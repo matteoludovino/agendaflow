@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { CalendarCheck, Clock, Mail } from "lucide-react"
+import Image from "next/image"
+import { CalendarCheck, Mail } from "lucide-react"
 import { formatCurrency, formatDuration, generateInitials } from "@/lib/utils"
 import { format, parse } from "date-fns"
 import { ptBR } from "date-fns/locale"
@@ -59,7 +60,7 @@ export function BookingSuccess({
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-primary text-sm font-bold text-primary-foreground">
             {professionalImage ? (
-              <img src={professionalImage} alt={professionalName ?? ""} className="h-full w-full object-cover" />
+              <Image src={professionalImage} alt={professionalName ?? ""} width={64} height={64} className="h-full w-full object-cover" />
             ) : (
               initials
             )}

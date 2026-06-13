@@ -1,12 +1,13 @@
 "use client"
 
-import { useTransition } from "react"
+import { useTransition, useState, useRef, useEffect } from "react"
+import Link from "next/link"
+import Image from "next/image"
 import { LogOut, Settings, User, Crown, Loader2 } from "lucide-react"
 import { generateInitials } from "@/lib/utils"
 import { getPlanLabel } from "@/lib/constants/plans"
 import { logoutAction } from "@/actions/auth.actions"
 import { cn } from "@/lib/utils"
-import { useState, useRef, useEffect } from "react"
 
 interface UserMenuProps {
   name: string | null | undefined
@@ -49,7 +50,7 @@ export function UserMenu({ name, email, image, plan }: UserMenuProps) {
       >
         <span className="flex h-7 w-7 items-center justify-center overflow-hidden rounded-full bg-primary text-xs font-semibold text-primary-foreground">
           {image ? (
-            <img src={image} alt={displayName} className="h-full w-full object-cover" />
+            <Image src={image} alt={displayName} width={28} height={28} className="h-full w-full object-cover" />
           ) : (
             initials
           )}
@@ -73,22 +74,22 @@ export function UserMenu({ name, email, image, plan }: UserMenuProps) {
 
           <div className="my-1 border-t border-border" />
 
-          <a
+          <Link
             href="/dashboard/settings/profile"
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm transition-colors hover:bg-accent"
           >
             <User className="h-4 w-4" />
             Meu perfil
-          </a>
-          <a
+          </Link>
+          <Link
             href="/dashboard/settings"
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm transition-colors hover:bg-accent"
           >
             <Settings className="h-4 w-4" />
             Configurações
-          </a>
+          </Link>
 
           <div className="my-1 border-t border-border" />
 

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState, useTransition } from "react"
 import { Loader2 } from "lucide-react"
 import { toast } from "sonner"
@@ -166,9 +167,9 @@ export function BookingForm({
 
       <p className="text-center text-xs text-muted-foreground">
         Ao confirmar, você concorda com os{" "}
-        <a href="/terms" className="underline hover:text-foreground">
+        <Link href="/terms" className="underline hover:text-foreground">
           termos de uso
-        </a>{" "}
+        </Link>{" "}
         do AgendaFlow.
       </p>
     </form>

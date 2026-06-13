@@ -216,7 +216,7 @@ export default async function UpgradePage({
         <h3 className="font-semibold">Dúvidas sobre o pagamento</h3>
         <div className="grid gap-4 sm:grid-cols-2 text-sm text-muted-foreground">
           <div><p className="font-medium text-foreground mb-1">Como funciona a cobrança?</p><p>Mensalidade recorrente processada pelo Stripe. Cancele a qualquer momento sem multa.</p></div>
-          <div><p className="font-medium text-foreground mb-1">Posso trocar de plano?</p><p>Sim. Acesse "Gerenciar assinatura" para fazer upgrade, downgrade ou cancelar via portal Stripe.</p></div>
+          <div><p className="font-medium text-foreground mb-1">Posso trocar de plano?</p><p>Sim. Acesse &ldquo;Gerenciar assinatura&rdquo; para fazer upgrade, downgrade ou cancelar via portal Stripe.</p></div>
           <div><p className="font-medium text-foreground mb-1">Quais formas de pagamento?</p><p>Cartão de crédito e débito (Visa, Mastercard, Amex). Pix disponível em breve.</p></div>
           <div><p className="font-medium text-foreground mb-1">E se eu cancelar?</p><p>Você mantém acesso ao plano até o fim do período pago. Depois volta ao Free automaticamente.</p></div>
         </div>

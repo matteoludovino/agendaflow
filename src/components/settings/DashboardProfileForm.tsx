@@ -1,9 +1,10 @@
 "use client"
 
+import Link from "next/link"
+
 import { useState, useTransition } from "react"
 import { ExternalLink, Loader2, Save, Crown } from "lucide-react"
 import { toast } from "sonner"
-import { cn } from "@/lib/utils"
 import { slugify, generateInitials } from "@/lib/utils"
 import { TIMEZONES, APP_CONFIG } from "@/lib/constants/config"
 import { updateProfileSettingsAction, updateSlugAction } from "@/actions/user.actions"
@@ -185,15 +186,15 @@ export function DashboardProfileForm({ user }: DashboardProfileFormProps) {
             aria-label="Abrir página de agendamento"
           >
             <ExternalLink className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
 
         {!isPro && (
           <p className="text-xs text-muted-foreground">
             Slug personalizado disponível no{" "}
-            <a href="/dashboard/upgrade" className="font-medium text-primary hover:underline">
+            <Link href="/dashboard/upgrade" className="font-medium text-primary hover:underline">
               plano Pro
-            </a>
+            </Link>
             .
           </p>
         )}

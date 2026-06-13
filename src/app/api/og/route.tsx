@@ -31,7 +31,6 @@ export async function GET(req: NextRequest) {
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        {/* grid lines */}
         <div
           style={{
             position: "absolute",
@@ -42,7 +41,6 @@ export async function GET(req: NextRequest) {
           }}
         />
 
-        {/* top bar — logo */}
         <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "auto" }}>
           <div
             style={{
@@ -63,9 +61,7 @@ export async function GET(req: NextRequest) {
           </span>
         </div>
 
-        {/* center content */}
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          {/* avatar */}
           <div
             style={{
               width: "80px",
@@ -83,7 +79,6 @@ export async function GET(req: NextRequest) {
             {initials}
           </div>
 
-          {/* name */}
           <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             <span
               style={{
@@ -104,7 +99,6 @@ export async function GET(req: NextRequest) {
           </div>
         </div>
 
-        {/* bottom — booking url */}
         <div
           style={{
             display: "flex",

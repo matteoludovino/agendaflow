@@ -1,7 +1,6 @@
 "use server"
 
 import { AuthError } from "next-auth"
-import { redirect } from "next/navigation"
 import bcrypt from "bcryptjs"
 import { signIn, signOut } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"

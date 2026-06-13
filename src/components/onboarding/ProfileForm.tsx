@@ -1,6 +1,7 @@
 "use client"
 
-import { useTransition, useRef } from "react"
+import Image from "next/image"
+import { useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { Loader2, Camera } from "lucide-react"
 import { toast } from "sonner"

@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma"
 import { StatusBadge } from "@/components/shared/index"
 import { AppointmentActions } from "@/components/appointments/AppointmentActions"
 import { formatDateTime, formatCurrency, formatDuration } from "@/lib/utils"
-import { ArrowLeft, User, Briefcase, Clock, Mail, Phone, StickyNote } from "lucide-react"
+import { ArrowLeft, User, Clock, Mail, Phone, StickyNote } from "lucide-react"
 
 export const metadata: Metadata = { title: "Agendamento" }
 

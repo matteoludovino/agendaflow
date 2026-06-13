@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
 import { generateInitials } from "@/lib/utils"
 
@@ -37,7 +38,7 @@ export function ProfessionalHeader({
       <div className="flex items-center gap-4">
         <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-primary text-lg font-bold text-primary-foreground">
           {image ? (
-            <img src={image} alt={displayName} className="h-full w-full object-cover" />
+            <Image src={image} alt={displayName} width={80} height={80} className="h-full w-full object-cover" />
           ) : (
             initials
           )}
