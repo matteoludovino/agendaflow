@@ -80,7 +80,7 @@ export function DashboardScheduleEditor({ initialAvailability }: DashboardSchedu
     startTransition(async () => {
       const result = await saveAvailabilityAction({
         days: schedule.map(({ dayOfWeek, isActive, startTime, endTime }) => ({
-          dayOfWeek,
+          dayOfWeek: dayOfWeek as "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY",
           isActive,
           startTime,
           endTime,
