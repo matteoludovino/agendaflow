@@ -8,7 +8,8 @@ import { PageHeader } from "@/components/shared/index"
 import { Crown, Check, AlertCircle, Zap, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { PLANS } from "@/lib/constants/plans"
-import { startOfMonth, endOfMonth } from "date-fns"
+import { startOfMonth, endOfMonth, format } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
 export const metadata: Metadata = { title: "Faturamento" }
 
@@ -141,7 +142,7 @@ export default async function BillingPage({ searchParams }: PageProps) {
             <p className="mb-4 text-sm text-muted-foreground">
               Renova em{" "}
               <span className="font-medium text-foreground">
-                {formatDate(user.planExpiresAt)}
+                {format(user.planExpiresAt!, "dd/MM/yyyy", { locale: ptBR })}
               </span>
             </p>
           )}
