@@ -8,8 +8,17 @@ import { cn } from "@/lib/utils"
 import { saveAvailabilityAction } from "@/actions/availability.actions"
 import type { Availability } from "@prisma/client"
 
+type DayOfWeekEnum =
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY"
+
 interface DayConfig {
-  dayOfWeek: string
+  dayOfWeek: DayOfWeekEnum
   label: string
   shortLabel: string
   isActive: boolean
@@ -51,7 +60,7 @@ export function ScheduleForm({ initialAvailability }: ScheduleFormProps) {
     mergeWithSaved(initialAvailability)
   )
 
-  function toggleDay(dayOfWeek: string) {
+  function toggleDay(dayOfWeek: DayOfWeekEnum) {
     setSchedule((prev) =>
       prev.map((d) =>
         d.dayOfWeek === dayOfWeek ? { ...d, isActive: !d.isActive } : d
@@ -59,7 +68,7 @@ export function ScheduleForm({ initialAvailability }: ScheduleFormProps) {
     )
   }
 
-  function updateTime(dayOfWeek: string, field: "startTime" | "endTime", value: string) {
+  function updateTime(dayOfWeek: DayOfWeekEnum, field: "startTime" | "endTime", value: string) {
     setSchedule((prev) =>
       prev.map((d) =>
         d.dayOfWeek === dayOfWeek ? { ...d, [field]: value } : d
