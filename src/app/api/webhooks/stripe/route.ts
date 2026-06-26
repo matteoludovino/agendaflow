@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma"
 import { PLANS } from "@/lib/constants/plans"
 
 export const runtime = "nodejs"
+export const dynamic = "force-dynamic"
 
 function findPlanByPriceId(priceId: string) {
   return Object.values(PLANS).find(
