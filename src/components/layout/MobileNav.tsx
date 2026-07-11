@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
@@ -13,7 +14,6 @@ import {
   Users,
   Bell,
   Settings,
-  CalendarCheck,
   Crown,
   ExternalLink,
 } from "lucide-react"
@@ -64,8 +64,8 @@ export function MobileNav({ userPlan, userSlug }: MobileNavProps) {
           <div className="fixed inset-y-0 left-0 z-50 flex w-72 flex-col bg-sidebar shadow-xl md:hidden">
             <div className="flex h-14 items-center justify-between border-b border-sidebar-border px-4">
               <div className="flex items-center gap-2.5">
-                <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
-                  <CalendarCheck className="h-3.5 w-3.5" />
+                <div className="flex h-7 w-7 items-center justify-center overflow-hidden rounded-md bg-primary text-primary-foreground">
+                  <Image src="/agendaflow.png" alt="AgendaFlow logo" width={20} height={20} className="object-contain" />
                 </div>
                 <span className="text-sm font-semibold text-sidebar-foreground">AgendaFlow</span>
               </div>

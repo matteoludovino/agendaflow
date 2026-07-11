@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
@@ -10,13 +11,12 @@ import {
   Users,
   Bell,
   Settings,
-  CalendarCheck,
   ChevronLeft,
   Crown,
   ExternalLink,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { PLANS, canDo } from "@/lib/constants/plans"
+import { canDo } from "@/lib/constants/plans"
 import { useLocalStorage } from "@/hooks/useLocalStorage"
 
 interface NavItem {
@@ -68,8 +68,8 @@ export function Sidebar({ userPlan, userSlug }: SidebarProps) {
     >
       <div className={cn("flex h-14 items-center border-b border-sidebar-border px-4", collapsed && "justify-center px-0")}>
         <Link href="/dashboard" className={cn("flex items-center gap-2.5", collapsed && "justify-center")}>
-          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <CalendarCheck className="h-3.5 w-3.5" />
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-md bg-primary text-primary-foreground">
+            <Image src="/agendaflow.png" alt="AgendaFlow logo" width={20} height={20} className="object-contain" />
           </div>
           {!collapsed && (
             <span className="text-sm font-semibold tracking-tight text-sidebar-foreground">

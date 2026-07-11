@@ -1,6 +1,7 @@
+import Image from "next/image"
 import Link from "next/link"
 import { Sora } from "next/font/google"
-import { Calendar, Clock, Bell, BarChart2, Shield, Zap, CheckCircle2, ArrowRight, Star, Check, Globe, Sparkles } from "lucide-react"
+import { Calendar, Clock, Bell, BarChart2, Shield, Zap, CheckCircle2, ArrowRight, Star, Check, Globe } from "lucide-react"
 import { PLANS } from "@/lib/constants/plans"
 import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
@@ -58,7 +59,9 @@ export default function HomePage() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-zinc-100">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-900"><Sparkles className="h-4 w-4 text-white" /></div>
+            <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-zinc-900">
+              <Image src="/agendaflow.png" alt="AgendaFlow logo" width={28} height={28} className="object-contain" />
+            </div>
             <span className="text-lg font-bold tracking-tight">AgendaFlow</span>
           </Link>
           <div className="hidden items-center gap-8 md:flex">
@@ -245,7 +248,9 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-zinc-900"><Sparkles className="h-3.5 w-3.5 text-white" /></div>
+              <div className="flex h-7 w-7 items-center justify-center overflow-hidden rounded-lg bg-zinc-900">
+                <Image src="/agendaflow.png" alt="AgendaFlow logo" width={24} height={24} className="object-contain" />
+              </div>
               <span className="font-bold text-zinc-900">AgendaFlow</span>
             </Link>
             <div className="flex gap-6 text-sm text-zinc-400">
